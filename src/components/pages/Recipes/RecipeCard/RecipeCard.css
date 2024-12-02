@@ -1,8 +1,3 @@
-.recipe-cards {
-    margin-top: 500px;
-    margin-left: 90px;
-    margin-right: 90px;
-}
 
 .recipe-cards-title {
     text-align: center;
@@ -10,8 +5,25 @@
     font-weight: bold;
     color: #333;
     margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    position: relative;
 }
 
+.recipe-cards-title::before {
+    content: "🥄";
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -30px;
+}
+
+.recipe-cards-title span {
+    color: #4CAF50;
+    font-style: italic;
+}
 .recipe-cards-list {
     display: flex;
     flex-wrap: wrap;
@@ -53,6 +65,59 @@
     flex-direction: column;
     gap: 5px;
     padding: 3px;
+}
+
+
+.recipe-cards-not-found {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.recipe-cards-not-found::before {
+    content: "🍽️";
+    font-size: 3rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -25px;
+}
+
+.recipe-cards-not-found span {
+    color: #ff6347;
+    font-style: italic;
+}
+
+
+.type-recepies {
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.title-diets {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4CAF50; /* Зелёный цвет */
+    margin-bottom: 2px;
+    margin-top: 5px;
+}
+
+.name-diets {
+    font-size: 1rem;
+    color: #555;
+    list-style: disc;
+}
+
+.vegan-diets, .vegeterian-diets {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555
 }
 
 p{

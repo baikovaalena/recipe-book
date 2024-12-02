@@ -1,4 +1,4 @@
-interface IRecipe {
+export interface IRecipe {
   vegetarian: boolean;
   vegan: boolean;
   glutenFree: boolean;
@@ -35,7 +35,7 @@ interface IRecipe {
   author?: string;
 }
 
-export interface ApiResponse {
+interface ApiResponse {
   results: IRecipe[];
   offset: number;
   number: number;

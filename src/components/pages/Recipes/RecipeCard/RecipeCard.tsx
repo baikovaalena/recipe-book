@@ -1,30 +1,53 @@
-import React from 'react';
 import './RecipeCard.css';
-import { ApiResponse } from '../../../../types/IRecipe';
+import { IRecipe } from '../../../../types/IRecipe';
+import React, { useState } from 'react';
 
 interface IProps {
-  recipes: ApiResponse;
+  recipes: IRecipe[];
 }
 
 const RecipeCard = ({ recipes }: IProps) => {
-  const results = recipes.results;
+  const [checkIdCards, setCheckIdCards] = useState<number[]>([]);
+
+  function handleCheckId(id: number): void {
+    setCheckIdCards((prev) =>
+      prev.includes(id) ? prev.filter((itemCardID) => itemCardID !== id) : [...prev, id],
+    );
+  }
+
   return (
     <div className="recipe-cards">
-      <h1 className="recipe-cards-title">Найденные рецепты:</h1>
-      <ul className="recipe-cards-list">
-        {results.map((parameters) => {
-          return (
-            <li key={parameters.id} className="card">
-              <h4 className="recipe-title">{parameters.title}</h4>
-              <img src={parameters.image} alt={parameters.title} />
-              <div className="type-recepies">
-                <p>Веган:{parameters.vegan ? 'Да' : 'Нет'}</p>
-                <p>Вегетерианец:{parameters.vegetarian ? 'Да' : 'Нет'}</p>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+      {recipes.length > 0 && (
+        <>
+          <h1 className="recipe-cards-title">Найденные рецепты:</h1>
+          <ul className="recipe-cards-list">
+            {recipes.map((parameters) => {
+              const { id, title, image, vegan, vegetarian, diets } = parameters;
+              const checkedId = checkIdCards.includes(id);
+              return (
+                <li key={id} className="card">
+                  <h4 className="recipe-title">{title}</h4>
+                  <img src={image} alt={title} />
+                  <div className="type-recepies">
+                    <h5 className="title-diets">Диеты:</h5>
+                    <p className="vegan-diets">vegan: {vegan ? 'Да' : 'Нет'}</p>
+                    <p className="vegetarian-diets">vegetarian: {vegetarian ? 'Да' : 'Нет'}</p>
+                    <button onClick={() => handleCheckId(id)}>
+                      {checkedId ? 'Скрыть' : 'Смотреть все'}
+                    </button>
+                    {checkedId &&
+                      diets.map((diet, index) => (
+                        <p key={index} className="name-diets">
+                          {diet}: Да
+                        </p>
+                      ))}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
     </div>
   );
 };

@@ -1,12 +1,12 @@
 import './SearchRecipe.css';
 
 interface SearchRecipeProps {
-  handleOnChange: (value: string) => void;
+  onChange: (value: string) => void;
   searchValue: string;
   handleClick: () => void;
 }
 
-const SearchRecipe = ({ searchValue, handleOnChange, handleClick }: SearchRecipeProps) => {
+const SearchRecipe = ({ searchValue, onChange, handleClick }: SearchRecipeProps) => {
   return (
     <div className="search__container">
       <h1 className="search__container_input-title">Найди вдохновение для вкусных блюд</h1>
@@ -16,7 +16,7 @@ const SearchRecipe = ({ searchValue, handleOnChange, handleClick }: SearchRecipe
           placeholder="Найти свой рецепт"
           className="search-input-recipe"
           value={searchValue}
-          onChange={(e) => handleOnChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
         />
         <button onClick={handleClick} className="search-button-recipe">
           Найти
