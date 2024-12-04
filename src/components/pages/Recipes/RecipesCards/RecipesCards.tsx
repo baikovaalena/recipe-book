@@ -8,6 +8,7 @@ interface IProps {
 
 const RecipeCard = ({ recipes }: IProps) => {
   const [checkIdCards, setCheckIdCards] = useState<number[]>([]);
+  const [isVisibleInfo, setIsVisibleInfo] = useState();
 
   function handleCheckId(id: number): void {
     setCheckIdCards((prev) =>
