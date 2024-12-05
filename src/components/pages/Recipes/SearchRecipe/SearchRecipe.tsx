@@ -1,4 +1,5 @@
 import './SearchRecipe.css';
+import './SearchRecipeMobileVersion/SearchRecipeMobileVersion.css';
 
 interface SearchRecipeProps {
   onChange: (value: string) => void;
@@ -8,17 +9,17 @@ interface SearchRecipeProps {
 
 const SearchRecipe = ({ searchValue, onChange, onSearch }: SearchRecipeProps) => {
   return (
-    <div className="search__container">
-      <h1 className="search__container_input-title">Найди вдохновение для вкусных блюд</h1>
-      <div className="search__container_input-btn">
+    <div className="search-container">
+      <h1 className="search-container__input-title">Найди вдохновение для вкусных блюд</h1>
+      <div className="search-container__input-btn">
         <input
           type="text"
           placeholder="Найти свой рецепт"
-          className="search-input-recipe"
+          className="search-container__input-recipe"
           value={searchValue}
           onChange={(e) => onChange(e.target.value)}
         />
-        <button onClick={onSearch} className="search-button-recipe">
+        <button onClick={onSearch} className="search-container__button-recipe">
           Найти
         </button>
       </div>

@@ -1,5 +1,5 @@
 
-.search__container_input-title {
+.search-container__input-title {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
@@ -7,7 +7,7 @@
     color: #333;
 }
 
-.search-input-recipe {
+.search-container__input-recipe {
     display: block;
     width: 600px;
     padding: 17px 17px;
@@ -20,47 +20,47 @@
     transition: 0.3s ease-in-out;
 }
 
-.search-input-recipe::placeholder {
+.search-container__input-recipe::placeholder {
     color: #7a7a7a;
 }
 
-.search-input-recipe:focus {
+.search-container__input-recipe:focus {
     border-color: #dda15e;
     box-shadow: 0 0 10px rgba(221, 161, 94, 0.5);
 }
 
-.search__container{
+.search-container{
     margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.search-button-recipe{
+.search-container__button-recipe{
     padding: 17px 30px;
     border-radius: 7px;
-    background-color: #5c3017;
-    border-color: #945f42;
-
+    background-color: #759f46;
+    border-color: #74c74b;
 }
 
-.search-button-recipe:hover {
-    background-color: #f0a877;
+.search-container__button-recipe:hover {
+    background-color: #487e2e;
     color: #fff;
 }
 
-.search-button-recipe:focus {
+.search-container__button-recipe:focus {
     border-color: #dda15e;
     box-shadow: 0 0 10px rgba(221, 161, 94, 0.5);
 }
 
-.search-button-recipe:active {
+.search-container__button-recipe:active {
     background-color: #dda15e;
     border-color: #dda15e;
 }
 
-.search__container_input-btn{
+.search-container__input-btn{
     display: flex;
     align-items: center;
     gap:10px;
+    max-width: 100%;
 }

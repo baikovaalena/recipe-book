@@ -1,57 +1,27 @@
-.sorting-parameters {
+.container-inputs {
     display: flex;
-    gap: 10px;
-    margin: 40px 0;
-    align-items: center;
-    justify-content: center;
+    gap: 5px;
+    margin: 20px 0 20px 20px;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
-.label-vegan, .label-vegeterian {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.input-vegeterian {
+.container-inputs__input {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-    accent-color: #4CAF50; /* Цвет для чекбокса */
+    accent-color: #4caf6f;
 }
 
-.label-vegan {
-    color: #388E3C;
-}
-
-.label-vegeterian {
-    color: #FF9800;
-}
-
-.label-keta{
-    color: #ea1a1a;
-}
-
-.label-gluten{
-    color: #1a63ea;
-}
-
-.label-gluten, .label-keta, .label-vegeterian, .label-vegan{
+.container-inputs__label-gluten, .container-inputs__label-ketogenic, .container-inputs__label-vegetarian, .container-inputs__label-vegan {
     display: flex;
-    align-items: center
+    align-items: center;
+    cursor: pointer;
+    accent-color: #4caf6f;
 }
 
 
-.label-vegan:hover, .label-vegeterian:hover {
-    opacity: 0.8;
+.container-inputs__label-vegan:hover, .container-inputs__label-vegetarian:hover, .container-inputs__label-gluten:hover, .container-inputs__label-ketogenic:hover {
+    color: #0e3e06;
 }
 
-.label-vegan input:checked, .label-vegeterian input:checked {
-    background-color: #388E3C;
-    border-color: #388E3C;
-}
-
-.input-vegeterian:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px rgba(56, 142, 60, 0.5);
-}

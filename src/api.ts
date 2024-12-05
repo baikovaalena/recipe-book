@@ -1,6 +1,8 @@
+import { IRecipeApiResponse } from './types/IRecipeApiResponse';
+
 const KEY_API = 'ed5cf03263f445839318bb8d41770361';
 
-interface IProps {
+interface IRecipeGetParams {
   inputValue: string;
   isVegan: boolean;
   isVegetarian: boolean;
@@ -8,16 +10,16 @@ interface IProps {
   isGlutenFree: boolean;
 }
 
-export const getRecipe = async ({
+const createRecipeParams = ({
   inputValue,
   isVegan,
   isVegetarian,
   isKeto,
   isGlutenFree,
-}: IProps): Promise<any> => {
+}: IRecipeGetParams): URLSearchParams => {
   const params = new URLSearchParams({
     apiKey: KEY_API,
-    number: '5',
+    number: '9',
     addRecipeInformation: 'true',
   });
   const diets = [];
@@ -43,11 +45,17 @@ export const getRecipe = async ({
   }
 
   if (diets.length) {
-    params.set('query', diets.join(','));
+    params.set('diets', diets.join(','));
   }
 
-  const response = await fetch(`https://api.spoonacular.com/recipes/complexSearch?${params}`);
+  return params;
+};
 
+export const getRecipe = async (params: IRecipeGetParams): Promise<IRecipeApiResponse> => {
+  const requestParams = createRecipeParams(params);
+  const response = await fetch(
+    `https://api.spoonacular.com/recipes/complexSearch?${requestParams}`,
+  );
   if (!response.ok) {
     throw new Error(response.statusText);
   }

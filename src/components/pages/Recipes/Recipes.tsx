@@ -1,10 +1,11 @@
 import { getRecipe } from '../../../api';
 import React, { useState } from 'react';
-import SearchRecipe from '../../shared/SearchRecipe/SearchRecipe';
-import RecipeCard from './RecipeCard/RecipeCard';
+import SearchRecipe from './SearchRecipe/SearchRecipe';
+import RecipesCards from './RecipesCards/RecipesCards';
 import { IRecipe } from '../../../types/IRecipe';
-import SortingParameters from '../../shared/SortingParameters/SortingParameters';
+import SortingParameters from './SortingParameters/SortingParameters';
 import Loader from '../../shared/Loader/Loader';
+import { TCheckboxSort } from '../../../types/TCheckboxSort';
 
 const Recipes = () => {
   const [recipes, setRecipes] = useState<IRecipe[]>([]);
@@ -16,42 +17,36 @@ const Recipes = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleCheckboxVegan = (): void => {
-    setIsVegan((prev) => !prev);
+  const handleCheckboxSortType = (sortType: TCheckboxSort) => {
+    switch (sortType) {
+      case 'vegan':
+        setIsVegan((prev) => !prev);
+        break;
+      case 'vegetarian':
+        setIsVegetarian((prev) => !prev);
+        break;
+      case 'ketogenic':
+        setIsKeto((prev) => !prev);
+        break;
+      case 'glutenFree':
+        setIsGlutenFree((prev) => !prev);
+    }
   };
 
-  const handleCheckboxVegetarian = (): void => {
-    setIsVegetarian((prev) => !prev);
-  };
-
-  const handleCheckboxKeto = (): void => {
-    setIsKeto((prev) => !prev);
-  };
-
-  const handleCheckboxGlutenFree = (): void => {
-    setIsGlutenFree((prev) => !prev);
-  };
-
-  const handleOnChange = (value: string) => {
+  const handleInputChange = (value: string) => {
     setInputValue(value);
   };
 
-  const fetchRecipes = async (
-    inputValue: string,
-    vegan: boolean,
-    vegetarian: boolean,
-    isKeto: boolean,
-    isGlutenFree: boolean,
-  ) => {
+  const fetchRecipes = async () => {
     setIsLoading(true);
     setError(null);
     try {
       const dataRecipes = await getRecipe({
         inputValue,
-        isVegan: vegan,
-        isVegetarian: vegetarian,
-        isKeto: isKeto,
-        isGlutenFree: isGlutenFree,
+        isVegan,
+        isVegetarian,
+        isKeto,
+        isGlutenFree,
       });
       setRecipes(dataRecipes.results);
     } catch (err) {
@@ -61,26 +56,19 @@ const Recipes = () => {
     }
   };
 
-  const handleClick = () => {
-    fetchRecipes(inputValue, isVegan, isVegetarian, isKeto, isGlutenFree);
-  };
-
   return (
     <>
-      <SearchRecipe onChange={handleOnChange} searchValue={inputValue} handleClick={handleClick} />
+      <SearchRecipe onChange={handleInputChange} searchValue={inputValue} onSearch={fetchRecipes} />
       <SortingParameters
-        onCheckboxVegan={handleCheckboxVegan}
-        onCheckboxVegetarian={handleCheckboxVegetarian}
-        onCheckboxKeto={handleCheckboxKeto}
-        onCheckboxGlutenFree={handleCheckboxGlutenFree}
+        onCheckboxDiets={handleCheckboxSortType}
         isGlutenFree={isGlutenFree}
         isVegan={isVegan}
         isVegetarian={isVegetarian}
         isKeto={isKeto}
       />
       {isLoading && <Loader />}
-      {error && <h1 className="recipe-cards-not-found">{error}</h1>}
-      {recipes && <RecipeCard recipes={recipes} />}
+      {error && <h1 className="recipes-cards__not-found">{error}</h1>}
+      {recipes && <RecipesCards recipes={recipes} isLoading={isLoading} />}
     </>
   );
 };

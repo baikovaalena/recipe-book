@@ -1,5 +1,5 @@
 
-.loader {
+.loader-container__loader {
     height: 35px;
     width: 80px;
     margin-left: 0px;
@@ -15,7 +15,7 @@
     border-bottom-left-radius: 30px 40px;
     animation: l7 3s infinite steps(10);
 }
-.loader::before {
+.loader-container__loader::before {
     content: " ";
     inset: calc(50% - 8px) -10px calc(50% - 8px) auto;
     width: 15px;
@@ -26,6 +26,7 @@
 .loader-container{
     display: flex;
     justify-content: center;
+    margin-bottom: 10px;
 }
 @keyframes l7 {
     100% {width: 20px;margin-left:60px;}

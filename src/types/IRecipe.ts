@@ -1,13 +1,13 @@
 export interface IRecipe {
-  vegetarian: boolean;
-  vegan: boolean;
+  // vegetarian: boolean;
+  // vegan: boolean;
   glutenFree: boolean;
   dairyFree: boolean;
   veryHealthy: boolean;
   cheap: boolean;
   veryPopular: boolean;
   sustainable: boolean;
-  lowFodmap: boolean;
+  lowFoodmap: boolean;
   weightWatcherSmartPoints: number;
   gaps: string;
   preparationMinutes: number | null;
@@ -33,11 +33,4 @@ export interface IRecipe {
   spoonacularSourceUrl: string;
   license?: string;
   author?: string;
-}
-
-interface ApiResponse {
-  results: IRecipe[];
-  offset: number;
-  number: number;
-  totalResults: number;
 }
