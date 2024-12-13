@@ -1,5 +1,5 @@
 import { getRecipe } from '../../../api';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SearchRecipe from './SearchRecipe/SearchRecipe';
 import RecipesCards from './RecipesCards/RecipesCards';
 import { IRecipe } from '../../../types/IRecipe';
@@ -48,6 +48,7 @@ const Recipes = () => {
         isKeto,
         isGlutenFree,
       });
+      sessionStorage.setItem('recipes', JSON.stringify(dataRecipes.results));
       setRecipes(dataRecipes.results);
     } catch (err) {
       setError('Ошибка загрузки рецептов. Попробуйте снова.');
@@ -55,6 +56,13 @@ const Recipes = () => {
       setIsLoading(false);
     }
   };
+
+  useEffect(() => {
+    const sessionRecipe = sessionStorage.getItem('recipes');
+    if (sessionRecipe !== null) {
+      setRecipes(JSON.parse(sessionRecipe));
+    }
+  }, []);
 
   return (
     <>
