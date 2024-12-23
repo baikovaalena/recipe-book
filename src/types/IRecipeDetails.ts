@@ -1,15 +1,3 @@
-export interface IRecipeDetails {
-  name: string;
-  steps: RecipeStep[];
-}
-
-interface RecipeStep {
-  number: number;
-  step: string;
-  ingredients: IngredientDetails[];
-  equipment: ToolDetails[];
-}
-
 interface IngredientDetails {
   id: number;
   name: string;
@@ -22,4 +10,16 @@ interface ToolDetails {
   name: string;
   localizedName: string;
   image: string;
+}
+
+export interface RecipeStep {
+  number: number;
+  step: string;
+  ingredients: IngredientDetails[];
+  equipment: ToolDetails[];
+}
+
+export interface IRecipe {
+  name: string;
+  steps: RecipeStep[];
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import './SortingParameters.css';
-import './SortingParametersMobileVersion/SortingParametersMobileVersion.css';
 import { TCheckboxSort } from '../../../../types/TCheckboxSort';
 
 interface IProps {
@@ -18,44 +17,51 @@ const SortingParameters = ({
   onCheckboxDiets,
   isKeto,
 }: IProps) => {
+  const sortInputs = [
+    {
+      id: '1',
+      type: 'checkbox',
+      label: 'Блюда для веганов',
+      onChange: () => onCheckboxDiets('vegan'),
+      checked: isVegan,
+    },
+    {
+      id: '2',
+      type: 'checkbox',
+      label: 'Блюда для вегетерианцев',
+      onChange: () => onCheckboxDiets('vegetarian'),
+      checked: isVegetarian,
+    },
+    {
+      id: '3',
+      type: 'checkbox',
+      label: 'Блюда для кето-диеты',
+      onChange: () => onCheckboxDiets('ketogenic'),
+      checked: isKeto,
+    },
+    {
+      id: '4',
+      type: 'checkbox',
+      label: 'Блюда без глютена',
+      onChange: () => onCheckboxDiets('glutenFree'),
+      checked: isGlutenFree,
+    },
+  ];
+
   return (
     <div className="container-inputs">
-      <label className="container-inputs__label-vegan">
-        <input
-          type="checkbox"
-          className="container-inputs__input"
-          onChange={() => onCheckboxDiets('vegan')}
-          checked={isVegan}
-        />
-        Блюда для веганов
-      </label>
-      <label className="container-inputs__label-vegetarian">
-        <input
-          type="checkbox"
-          className="container-inputs__input"
-          onChange={() => onCheckboxDiets('vegetarian')}
-          checked={isVegetarian}
-        />
-        Блюда для вегетерианцев
-      </label>
-      <label className="container-inputs__label-ketogenic">
-        <input
-          type="checkbox"
-          className="container-inputs__input"
-          onChange={() => onCheckboxDiets('ketogenic')}
-          checked={isKeto}
-        />
-        Keto-диета
-      </label>
-      <label className="container-inputs__label-gluten">
-        <input
-          type="checkbox"
-          className="container-inputs__input"
-          onChange={() => onCheckboxDiets('glutenFree')}
-          checked={isGlutenFree}
-        />
-        Без глютена
-      </label>
+      {sortInputs.map((itemInput) => {
+        return (
+          <label key={itemInput.id}>
+            <input
+              type={itemInput.type}
+              onChange={itemInput.onChange}
+              checked={itemInput.checked}
+            />
+            {itemInput.label}
+          </label>
+        );
+      })}
     </div>
   );
 };

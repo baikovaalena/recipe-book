@@ -1,21 +1,22 @@
 import logo from '../../../img/logo.png';
-import './HeaderDecstopMenu/HeaderDesctopMenu.css';
+import './HeaderDesktopMenu/HeaderDesktopMenu.css';
 
 import HeaderMobileMenu from './HeaderMobileMenu/HeaderMobileMenu';
-import HeaderDecstopMenu from './HeaderDecstopMenu/HeaderDecstopMenu';
+import HeaderDesktopMenu from './HeaderDesktopMenu/HeaderDesktopMenu';
 import { useState } from 'react';
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const handleMenuOpen = () => {
-    setMenuOpen((prev) => !prev);
+    setIsMenuOpen((prev) => !prev);
   };
+
   return (
     <header className="header-container">
       <img src={logo} alt="logo" className="logo" />
-      <HeaderMobileMenu onChange={handleMenuOpen} menuOpen={menuOpen} />
-      <HeaderDecstopMenu />
+      <HeaderMobileMenu onChange={handleMenuOpen} menuOpen={isMenuOpen} />
+      <HeaderDesktopMenu />
     </header>
   );
 };

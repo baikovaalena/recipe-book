@@ -11,7 +11,7 @@
     position: relative;
 }
 
-.recipes-cards__title::before {
+.recipes-cards__title:before {
     content: "🥄";
     font-size: 3rem;
     position: absolute;
@@ -109,7 +109,7 @@
 .title-diets {
     font-size: 20px;
     font-weight: bold;
-    color: #4CAF50; /* Зелёный цвет */
+    color: #4CAF50;
     margin-bottom: 2px;
     margin-top: 5px;
 }
@@ -148,4 +148,59 @@
 .card__recipe-btn-check:active {
     background-color: #1e7e34;
     transform: scale(0.95);
+}
+
+.card__add-favorites{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.favorites{
+    color: #3c3f40;
+}
+
+@media (max-width: 768px) {
+    .recipes-cards__not-found {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 25px;
+        padding-top: 20px;
+        letter-spacing: 1px;
+        position: relative;
+    }
+
+    .recipes-cards__not-found:before {
+        content: "🍽️";
+        font-size: 1.5rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 1px;
+    }
+
+    .recipes-cards__title {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+        padding-top: 25px;
+        border-radius: 10px;
+        letter-spacing: 1px;
+        position: relative;
+    }
+
+    .recipes-cards__title::before {
+        content: "🥄";
+        font-size: 2rem;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: -1px;
+    }
+
 }

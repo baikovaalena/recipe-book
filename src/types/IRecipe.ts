@@ -1,6 +1,4 @@
 export interface IRecipe {
-  // vegetarian: boolean;
-  // vegan: boolean;
   glutenFree: boolean;
   dairyFree: boolean;
   veryHealthy: boolean;

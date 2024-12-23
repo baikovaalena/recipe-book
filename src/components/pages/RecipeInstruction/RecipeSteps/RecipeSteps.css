@@ -1,0 +1,123 @@
+.instruction-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    color: #4CAF50;
+}
+
+.container__recipe-steps {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-steps-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    width: 95px;
+}
+
+.recipe-steps-btn:hover {
+    background-color: #45a049;
+}
+
+.recipe-steps {
+    margin-top: 20px;
+}
+
+.step {
+    margin-bottom: 20px;
+}
+
+.step-number {
+    font-size: 1.5rem;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.step-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+
+.section-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 20px 0 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.container__recipe-steps-btn-scroll {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.recipe-steps-btn-scroll {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #2196F3;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 95px;
+}
+
+.recipe-steps-btn-scroll:hover {
+    background-color: #1976D2;
+}
+
+
+@media (max-width: 768px) {
+    .recipe-steps-btn{
+        cursor: pointer;
+        color: white;
+        background-color: #0e3e06;
+        width: 90px;
+        height: 30px;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .container__recipe-steps{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,5 +1,4 @@
 import './SearchRecipe.css';
-import './SearchRecipeMobileVersion/SearchRecipeMobileVersion.css';
 
 interface SearchRecipeProps {
   onChange: (value: string) => void;

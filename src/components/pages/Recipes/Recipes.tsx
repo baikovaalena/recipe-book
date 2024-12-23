@@ -40,6 +40,7 @@ const Recipes = () => {
   const fetchRecipes = async () => {
     setIsLoading(true);
     setError(null);
+
     try {
       const dataRecipes = await getRecipe({
         inputValue,
@@ -48,6 +49,7 @@ const Recipes = () => {
         isKeto,
         isGlutenFree,
       });
+
       sessionStorage.setItem('recipes', JSON.stringify(dataRecipes.results));
       setRecipes(dataRecipes.results);
     } catch (err) {
@@ -59,6 +61,7 @@ const Recipes = () => {
 
   useEffect(() => {
     const sessionRecipe = sessionStorage.getItem('recipes');
+
     if (sessionRecipe !== null) {
       setRecipes(JSON.parse(sessionRecipe));
     }
@@ -74,8 +77,11 @@ const Recipes = () => {
         isVegetarian={isVegetarian}
         isKeto={isKeto}
       />
+
       {isLoading && <Loader />}
+
       {error && <h1 className="recipes-cards__not-found">{error}</h1>}
+
       {recipes && <RecipesCards recipes={recipes} isLoading={isLoading} />}
     </>
   );

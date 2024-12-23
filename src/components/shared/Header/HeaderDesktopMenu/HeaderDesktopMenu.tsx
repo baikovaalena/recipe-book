@@ -1,8 +1,8 @@
 import React from 'react';
-import './HeaderDesctopMenu.css';
+import './HeaderDesktopMenu.css';
 import { NavLink } from 'react-router';
 
-const HeaderDecstopMenu = () => {
+const HeaderDesktopMenu = () => {
   return (
     <ul className="header-container__header-list">
       <NavLink to="/" className="header-container-button">
@@ -18,4 +18,4 @@ const HeaderDecstopMenu = () => {
   );
 };
 
-export default HeaderDecstopMenu;
+export default HeaderDesktopMenu;

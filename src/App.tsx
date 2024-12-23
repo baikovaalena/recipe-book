@@ -3,8 +3,8 @@ import './App.css';
 import Header from './components/shared/Header/Header';
 import Recipes from './components/pages/Recipes/Recipes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import SeasonRecipe from './components/pages/SeasonRecipe/SeasonRecipe';
 import RecipeInstruction from './components/pages/RecipeInstruction/RecipeInstruction';
+import Favorites from './components/pages/Favorites/Favorites';
 
 const router = createBrowserRouter([
   {
@@ -17,20 +17,20 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: '/season-recipe',
-    element: (
-      <>
-        <Header />
-        <SeasonRecipe />
-      </>
-    ),
-  },
-  {
     path: `/recipe-instructions/:id`,
     element: (
       <>
         <Header />
         <RecipeInstruction />
+      </>
+    ),
+  },
+  {
+    path: `/favorites`,
+    element: (
+      <>
+        <Header />
+        <Favorites />
       </>
     ),
   },

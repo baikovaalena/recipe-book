@@ -4,15 +4,16 @@ import { NavLink } from 'react-router';
 interface IProps {
   onChange: () => void;
   menuOpen: boolean;
+  // TODO isMenuOpen
 }
 
 const HeaderMobileMenu = ({ menuOpen, onChange }: IProps) => {
   return (
     <div className="header-container__mobile-menu">
       <button className="burger" onClick={onChange}>
-        <span className="line"></span>
-        <span className="line"></span>
-        <span className="line"></span>
+        <span className="line" />
+        <span className="line" />
+        <span className="line" />
       </button>
       {menuOpen && (
         <nav className="burger__mobile-menu">
