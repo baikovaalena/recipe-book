@@ -1,4 +1,9 @@
-.container-inputs {
+.container-inputs{
+    display: flex;
+    gap: 10px;
+}
+
+.container-inputs-checkbox {
     display: flex;
     gap: 5px;
     margin: 20px 0 20px 20px;
@@ -6,30 +11,47 @@
     flex-direction: column;
 }
 
-.container-inputs input {
+.container-inputs-checkbox input {
     width: 20px;
     height: 20px;
     margin-right: 10px;
     accent-color: #4caf6f;
 }
 
-.container-inputs label {
+.container-inputs-checkbox label {
     display: flex;
     align-items: center;
     cursor: pointer;
     accent-color: #4caf6f;
 }
 
-.container-inputs label:hover {
+.container-inputs-checkbox label:hover {
     color: #0e3e06;
 }
 
-@media (max-width: 768px) {
-    .container-inputs {
-        display: flex;
-        flex-direction: row;
-    }
 
+.container-inputs-radio{
+    display: flex;
+    gap: 5px;
+    margin: 20px 0 20px 20px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.container-inputs-drop-title, .container-inputs-checkbox-title{
+    font-size:15px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+    .container-inputs-checkbox {
+        display: flex;
+        flex-direction: column;
+    }
+    input{
+        width: 15px;
+        height: 15px;
+    }
     .container-inputs__input {
         width: 15px;
         height: 15px;
@@ -37,12 +59,15 @@
         accent-color: #4caf6f;
     }
 }
-
 @media (max-width: 480px) {
-    .container-inputs {
+    .container-inputs-checkbox {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    input{
+        width: 10px;
+        height: 10px;
     }
 
     .container-inputs__input {

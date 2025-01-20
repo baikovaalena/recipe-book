@@ -1,21 +1,30 @@
-import { TSaveRecipe } from '../../../types/TSaveRecipe';
+import { IFavoriteRecipe } from '../../../types/IFavoriteRecipe';
+import './Favorites.css';
 import { NavLink } from 'react-router';
+import { useFavoriteRecipes } from '../../../context/FavoriteRecipesContext';
 
 const Favorites = () => {
-  const storedData = localStorage.getItem('recipeData');
-  const favoritesData = storedData ? JSON.parse(storedData) : [];
+  const { favoriteRecipes, handleDeleteFavorite } = useFavoriteRecipes();
 
   return (
-    <div>
-      <h1>Избранное</h1>
+    <div className="favorites_page">
+      <h1 className="favorites__header">Избранное</h1>
       <ul className="recipes-cards__list">
-        {favoritesData.map((saveObject: TSaveRecipe) => (
-          <NavLink to={`/recipe-instructions/${saveObject.id}`} key={saveObject.id}>
-            <li className="card">
-              <p className="card__recipe-title">{saveObject.title}</p>
-              <img src={saveObject.img} alt="" className="card__recipe-image" />
-            </li>
-          </NavLink>
+        {favoriteRecipes.map((saveObject: IFavoriteRecipe) => (
+          <div key={saveObject.id}>
+            <button
+              className="delete-card__favorite"
+              onClick={() => handleDeleteFavorite(saveObject.id)}
+            >
+              Удалить
+            </button>
+            <NavLink to={`/recipe-instructions/${saveObject.id}`}>
+              <li className="card">
+                <p className="card__recipe-title">{saveObject.title}</p>
+                <img src={saveObject.img} alt="" className="card__recipe-image" />
+              </li>
+            </NavLink>
+          </div>
         ))}
       </ul>
     </div>

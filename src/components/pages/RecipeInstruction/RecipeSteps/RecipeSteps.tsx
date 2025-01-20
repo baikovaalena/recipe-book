@@ -1,13 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { RecipeStep } from '../../../../types/IRecipeDetails';
+import { IRecipeStep } from '../../../../types/IRecipeDetails';
 import './RecipeSteps.css';
 
 interface IProps {
-  instructionById: RecipeStep[];
-  isLoading: boolean;
+  instructionById: IRecipeStep[];
 }
 
-const RecipeSteps = ({ instructionById, isLoading }: IProps) => {
+const RecipeSteps = ({ instructionById }: IProps) => {
   const navigate = useNavigate();
   const handleScroll = () => {
     window.scrollTo({
@@ -18,9 +17,8 @@ const RecipeSteps = ({ instructionById, isLoading }: IProps) => {
   };
 
   return (
-    <div>
-      {isLoading ? '' : <h1 className="instruction-title">Инструкция</h1>}
-
+    <div className="container__instruction">
+      <h1 className="instruction-title">Инструкция</h1>
       <button
         onClick={() => {
           if (window.history.length > 1) {

@@ -1,21 +1,20 @@
 import './CheckboxFavorites.css';
-import { TSaveRecipe } from '../../../../types/TSaveRecipe';
-
+import { IFavoriteRecipe } from '../../../../types/IFavoriteRecipe';
 interface IProps {
-  favoritesOnChange: (saveRecipe: TSaveRecipe) => void;
+  onChangeFavorites: (saveRecipe: IFavoriteRecipe) => void;
   id: number;
   isChecked: boolean;
-  saveRecipe: TSaveRecipe;
+  favoriteRecipe: IFavoriteRecipe;
 }
 
-const CheckBoxFavorites = ({ favoritesOnChange, id, isChecked, saveRecipe }: IProps) => {
+const CheckBoxFavorites = ({ onChangeFavorites, id, isChecked, favoriteRecipe }: IProps) => {
   return (
     <>
       <input
         type="checkbox"
         id={`checkbox-${id}`}
         className="checkbox"
-        onChange={() => favoritesOnChange(saveRecipe)}
+        onChange={() => onChangeFavorites(favoriteRecipe)}
         checked={isChecked}
       />
       <label htmlFor={`checkbox-${id}`} className="checkbox-label"></label>

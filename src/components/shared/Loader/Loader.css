@@ -27,6 +27,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
+    margin-top: 30px;
 }
 @keyframes l7 {
     100% {width: 20px;margin-left:60px;}

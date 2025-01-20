@@ -1,60 +1,42 @@
 import './RecipesCards.css';
 import { IRecipe } from '../../../../types/IRecipe';
 import RecipeCard from './RecipeCard/RecipeCard';
-import React, { useEffect, useState } from 'react';
 import CheckBoxFavorites from '../../Favorites/CheckboxFavorites/CheckboxFavorites';
-import { TSaveRecipe } from '../../../../types/TSaveRecipe';
+import { IFavoriteRecipe } from '../../../../types/IFavoriteRecipe';
+import { useFavoriteRecipes } from '../../../../context/FavoriteRecipesContext';
 
 interface IProps {
-  isLoading: boolean;
   recipes: IRecipe[];
 }
 
-const RecipesCards = ({ isLoading, recipes }: IProps) => {
-  const [recipeData, setRecipeData] = useState<TSaveRecipe[]>([]);
-
-  const handleSwitchFavoritesRecipe = (favoritesRecipe: TSaveRecipe) => {
-    const isIdComparison = recipeData.some((item) => item.id === favoritesRecipe.id);
-
-    setRecipeData((prev) =>
-      isIdComparison
-        ? prev.filter((item) => item.id !== favoritesRecipe.id)
-        : [...prev, favoritesRecipe],
-    );
-  };
-
-  useEffect(() => {
-    localStorage.setItem('recipeData', JSON.stringify(recipeData));
-  }, [recipeData]);
+const RecipesCards = ({ recipes }: IProps) => {
+  const { favoriteRecipes, handleSwitchFavoritesRecipe } = useFavoriteRecipes();
 
   return (
     <div className="recipes-cards">
-      {recipes.length === 0 && !isLoading ? (
+      {recipes.length === 0 ? (
         <p className="recipes-cards__not-found">Пусто</p>
       ) : (
         <>
-          {isLoading ? null : <h1 className="recipes-cards__title">Найденные рецепты:</h1>}
-
+          <h1 className="recipes-cards__title">Найденные рецепты:</h1>
           <ul className="recipes-cards__list">
             {recipes.map((recipe) => {
-              const saveFavoritesRecipe: TSaveRecipe = {
+              const isChecked = favoriteRecipes.some((saveObject) => saveObject.id === recipe.id);
+
+              const saveFavoritesRecipe: IFavoriteRecipe = {
                 title: recipe.title,
                 img: recipe.image,
                 id: recipe.id,
               };
-
-              const isChecked = recipeData.some(
-                (saveObject) => saveObject.id === saveFavoritesRecipe.id,
-              );
 
               return (
                 <div className="cards" key={recipe.id}>
                   <div className="card__add-favorites">
                     <p className="favorites">Избранное</p>
                     <CheckBoxFavorites
-                      favoritesOnChange={handleSwitchFavoritesRecipe}
+                      onChangeFavorites={handleSwitchFavoritesRecipe}
                       isChecked={isChecked}
-                      saveRecipe={saveFavoritesRecipe}
+                      favoriteRecipe={saveFavoritesRecipe}
                       id={recipe.id}
                     />
                   </div>

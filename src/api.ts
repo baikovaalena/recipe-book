@@ -1,29 +1,31 @@
 import { IRecipeApiResponse } from './types/IRecipeApiResponse';
 import { IRecipe } from './types/IRecipeDetails';
+import { ISortPrams } from './components/pages/Recipes/Recipes';
 
-const KEY_API = '9cfc2d5a0267486290adb44d8304aaec';
+const KEY_API = '9b75719548e643caad55a1f191cdc327';
 
 interface IRecipeGetParams {
   inputValue: string;
-  isVegan: boolean;
-  isVegetarian: boolean;
-  isKeto: boolean;
-  isGlutenFree: boolean;
+  booleanParameters: ISortPrams;
+  currentPage: number;
+  numberOfCards: number;
 }
 
 const createRecipeParams = ({
   inputValue,
-  isVegan,
-  isVegetarian,
-  isKeto,
-  isGlutenFree,
+  booleanParameters,
+  currentPage,
+  numberOfCards,
 }: IRecipeGetParams): URLSearchParams => {
   const params = new URLSearchParams({
     apiKey: KEY_API,
-    number: '9',
+    number: numberOfCards.toString(),
     addRecipeInformation: 'true',
     addRecipeInstructions: 'true',
+    offset: ((currentPage - 1) * numberOfCards).toString(),
   });
+
+  const { isVegan, isKeto, isVegetarian, isGlutenFree } = booleanParameters;
 
   const diets = [];
 

@@ -6,3 +6,5 @@ export interface IRecipeApiResponse {
   number: number;
   totalResults: number;
 }
+
+export type paginationResponse = Omit<IRecipeApiResponse, 'results'>;

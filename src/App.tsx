@@ -1,10 +1,10 @@
 import React from 'react';
-import './App.css';
 import Header from './components/shared/Header/Header';
 import Recipes from './components/pages/Recipes/Recipes';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RecipeInstruction from './components/pages/RecipeInstruction/RecipeInstruction';
 import Favorites from './components/pages/Favorites/Favorites';
+import { FavoriteRecipesProvider } from './context/FavoriteRecipesContext';
 
 const router = createBrowserRouter([
   {
@@ -39,7 +39,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-      <RouterProvider router={router} />
+      <FavoriteRecipesProvider>
+        <RouterProvider router={router} />
+      </FavoriteRecipesProvider>
     </>
   );
 }

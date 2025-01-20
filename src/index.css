@@ -4,8 +4,12 @@
     box-sizing: border-box;
 }
 
-html, body {
-    height: 100%;
+html, body{
+    height: 100vh;
+}
+html {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
 }
 
 body {
@@ -40,4 +44,10 @@ button, input, textarea, select {
     outline: none;
     border: none;
     background: none;
+}
+
+#root{
+ min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }

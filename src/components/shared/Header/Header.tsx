@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <header className="header-container">
       <img src={logo} alt="logo" className="logo" />
-      <HeaderMobileMenu onChange={handleMenuOpen} menuOpen={isMenuOpen} />
+      <HeaderMobileMenu onChange={handleMenuOpen} isMenuOpen={isMenuOpen} />
       <HeaderDesktopMenu />
     </header>
   );

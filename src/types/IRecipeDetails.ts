@@ -12,7 +12,7 @@ interface ToolDetails {
   image: string;
 }
 
-export interface RecipeStep {
+export interface IRecipeStep {
   number: number;
   step: string;
   ingredients: IngredientDetails[];
@@ -21,5 +21,5 @@ export interface RecipeStep {
 
 export interface IRecipe {
   name: string;
-  steps: RecipeStep[];
+  steps: IRecipeStep[];
 }

@@ -3,11 +3,10 @@ import { NavLink } from 'react-router';
 
 interface IProps {
   onChange: () => void;
-  menuOpen: boolean;
-  // TODO isMenuOpen
+  isMenuOpen: boolean;
 }
 
-const HeaderMobileMenu = ({ menuOpen, onChange }: IProps) => {
+const HeaderMobileMenu = ({ isMenuOpen, onChange }: IProps) => {
   return (
     <div className="header-container__mobile-menu">
       <button className="burger" onClick={onChange}>
@@ -15,7 +14,7 @@ const HeaderMobileMenu = ({ menuOpen, onChange }: IProps) => {
         <span className="line" />
         <span className="line" />
       </button>
-      {menuOpen && (
+      {isMenuOpen && (
         <nav className="burger__mobile-menu">
           <NavLink to="/" className="burger__mobile-menu-link">
             ГЛАВНАЯ
