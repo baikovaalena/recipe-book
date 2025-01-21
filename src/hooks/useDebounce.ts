@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useDebounce = (value: string) => {
-  const [inputDebounce, setInputDebounce] = useState<string>('');
+const useDebounce = <T>(value: T): T => {
+  const [debouncedValue, setDebouncedValue] = useState<T>(value);
 
   useEffect(() => {
     const timeOut = setTimeout(() => {
-      setInputDebounce(value);
+      setDebouncedValue(value);
     }, 400);
 
     return () => {
@@ -13,7 +13,7 @@ const useDebounce = (value: string) => {
     };
   }, [value]);
 
-  return inputDebounce;
+  return debouncedValue;
 };
 
 export default useDebounce;

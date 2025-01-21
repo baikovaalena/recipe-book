@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RecipeInstruction from './components/pages/RecipeInstruction/RecipeInstruction';
 import Favorites from './components/pages/Favorites/Favorites';
 import { FavoriteRecipesProvider } from './context/FavoriteRecipesContext';
+import RecommendationWine from './components/pages/Wine/RecomendationWine';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,15 @@ const router = createBrowserRouter([
       <>
         <Header />
         <Favorites />
+      </>
+    ),
+  },
+  {
+    path: `/wine`,
+    element: (
+      <>
+        <Header />
+        <RecommendationWine />
       </>
     ),
   },

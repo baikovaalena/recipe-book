@@ -8,8 +8,8 @@ const HeaderDesktopMenu = () => {
       <NavLink to="/" className="header-container-button">
         ГЛАВНАЯ
       </NavLink>
-      <NavLink to="/season-recipe" className="header-container-button">
-        СЕЗОННЫЕ БЛЮДА
+      <NavLink to="/wine" className="header-container-button">
+        ВЫБОР ВИН
       </NavLink>
       <NavLink to="/favorites" className="header-container-button">
         ИЗБРАННОЕ

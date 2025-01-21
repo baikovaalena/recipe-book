@@ -8,7 +8,7 @@ import Loader from '../../shared/Loader/Loader';
 import { TCheckboxSort } from '../../../types/TCheckboxSort';
 import { paginationResponse } from '../../../types/IRecipeApiResponse';
 import Pagination from './Pagination/Pagination';
-import useDebounce from './useDebounce';
+import useDebounce from '../../../hooks/useDebounce';
 
 export interface ISortPrams {
   isVegan: boolean;

@@ -1,14 +1,20 @@
 import { IRecipeApiResponse } from './types/IRecipeApiResponse';
 import { IRecipe } from './types/IRecipeDetails';
 import { ISortPrams } from './components/pages/Recipes/Recipes';
+import { RecommendedWinesResponse } from './types/IWine';
 
-const KEY_API = '9b75719548e643caad55a1f191cdc327';
+const KEY_API = 'cbb93fe8a723455081d31f8c0e0ded9d';
 
 interface IRecipeGetParams {
   inputValue: string;
   booleanParameters: ISortPrams;
   currentPage: number;
   numberOfCards: number;
+}
+
+interface IWineParams {
+  valueNameWine: string;
+  scoreWine: number;
 }
 
 const createRecipeParams = ({
@@ -74,6 +80,21 @@ export const getRecipe = async (params: IRecipeGetParams): Promise<IRecipeApiRes
 export const getInstructionRecipe = async (id: string): Promise<IRecipe[]> => {
   const response = await fetch(
     `https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=${KEY_API}`,
+  );
+
+  if (!response.ok) {
+    throw new Error(response.statusText);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+export const getRecommendationWine = async (
+  params: IWineParams,
+): Promise<RecommendedWinesResponse> => {
+  const response = await fetch(
+    `https://api.spoonacular.com/food/wine/recommendation?apiKey=${KEY_API}&wine=${params.valueNameWine}&minRating=${params.scoreWine}&number=10`,
   );
 
   if (!response.ok) {
