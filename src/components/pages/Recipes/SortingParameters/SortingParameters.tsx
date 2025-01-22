@@ -63,6 +63,7 @@ const SortingParameters = ({ parameters, onCheckboxDiets, onChangeNumberOfCards 
           return (
             <label key={itemInput.id}>
               <input
+                className="container-inputs-sort-parameter"
                 type={itemInput.type}
                 onChange={itemInput.onChange}
                 checked={itemInput.checked}

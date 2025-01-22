@@ -1,4 +1,4 @@
-interface Wine {
+export interface Wine {
   id: number;
   title: string;
   averageRating: number;
