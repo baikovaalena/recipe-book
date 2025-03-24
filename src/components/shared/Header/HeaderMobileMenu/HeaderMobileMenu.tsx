@@ -1,5 +1,6 @@
 import './HeaderMobileMenu.css';
 import { NavLink } from 'react-router';
+import React from 'react';
 
 interface IProps {
   onChange: () => void;
@@ -19,10 +20,10 @@ const HeaderMobileMenu = ({ isMenuOpen, onChange }: IProps) => {
           <NavLink to="/" className="burger__mobile-menu-link">
             ГЛАВНАЯ
           </NavLink>
-          <NavLink to="/season-recipe" className="burger__mobile-menu-link">
-            СЕЗОННЫЕ БЛЮДА
+          <NavLink to="/wine" className="burger__mobile-menu-link">
+            ВЫБОР ВИН
           </NavLink>
-          <NavLink to="/favorits" className="burger__mobile-menu-link">
+          <NavLink to="/favorites" className="burger__mobile-menu-link">
             ИЗБРАННОЕ
           </NavLink>
         </nav>
